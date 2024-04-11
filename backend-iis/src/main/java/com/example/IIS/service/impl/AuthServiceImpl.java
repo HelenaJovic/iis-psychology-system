@@ -81,8 +81,10 @@ public class AuthServiceImpl implements AuthService {
 
         userRepository.save(user);
 
+
         ApiResponse response = new ApiResponse("User registered successfully!");
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+
     }
 }

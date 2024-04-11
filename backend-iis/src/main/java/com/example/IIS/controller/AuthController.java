@@ -1,5 +1,6 @@
 package com.example.IIS.controller;
 
+import com.example.IIS.domain.User;
 import com.example.IIS.dto.JWTAuthResponse;
 import com.example.IIS.dto.LoginDTO;
 import com.example.IIS.dto.RegisterDTO;
