@@ -58,10 +58,13 @@ public class JwtTokenProvider {
     // validate Jwt token
     public boolean validateToken(String token){
         try{
+
+            System.out.println("JWT token: " + token);
             Jwts.parserBuilder()
                     .setSigningKey(key())
                     .build()
                     .parse(token);
+
             return true;
         } catch (MalformedJwtException ex) {
             throw new IISException(HttpStatus.BAD_REQUEST, "Invalid JWT token");
