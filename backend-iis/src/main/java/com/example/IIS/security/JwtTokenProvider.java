@@ -31,6 +31,7 @@ public class JwtTokenProvider {
     public String generateToken(Authentication authentication){
         String username = authentication.getName();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
         Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
 
         Date currentDate = new Date();
