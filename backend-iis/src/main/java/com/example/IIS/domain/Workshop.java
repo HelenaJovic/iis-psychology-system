@@ -18,6 +18,7 @@ import java.util.List;
 @Entity
 @Table(name = "workshops")
 public class Workshop {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,8 +48,8 @@ public class Workshop {
     @ManyToOne(fetch=FetchType.LAZY)
     private Psychologist psychologist;
 
-    @ManyToMany(mappedBy = "workshops")
-    private List<RegisteredUser> users;
+//    @ManyToMany(mappedBy = "workshops",cascade = CascadeType.ALL)
+//    private List<RegisteredUser> users;
 
     @JoinColumn(name = "hall_id")
     @ManyToOne(fetch=FetchType.LAZY)

@@ -23,11 +23,11 @@ public class RegisteredUser extends User{
 
 
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_workshop",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "workshop_id")
-    )
-    private Set<Workshop> workshops = new HashSet<Workshop>();
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "user_workshop",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "workshop_id")
+//    )
+//    private Set<Workshop> workshops = new HashSet<Workshop>();
 }

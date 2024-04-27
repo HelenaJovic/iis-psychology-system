@@ -37,7 +37,5 @@ public class WorkShopDto {
 
     private Long psychologistId;
 
-    private List<Long> userIds;
-
     private Long hallId;
 }

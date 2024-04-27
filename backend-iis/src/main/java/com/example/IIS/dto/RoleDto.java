@@ -1,20 +1,15 @@
 package com.example.IIS.dto;
 
-import com.example.IIS.domain.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class RoleDto {
+    private Long id;
     private String name;
-    private String lastName;
-    private String username;
-    private String email;
-    private String password;
-    private Role role;
 }

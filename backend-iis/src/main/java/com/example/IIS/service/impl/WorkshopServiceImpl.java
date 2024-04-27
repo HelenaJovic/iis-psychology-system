@@ -1,9 +1,9 @@
 package com.example.IIS.service.impl;
 
-import com.example.IIS.domain.Post;
 import com.example.IIS.domain.RegisteredUser;
 import com.example.IIS.domain.Workshop;
 import com.example.IIS.dto.RegisteredUserDto;
+import com.example.IIS.dto.UserWorkshopDto;
 import com.example.IIS.dto.WorkShopDto;
 import com.example.IIS.repository.WorkshopRepo;
 import com.example.IIS.service.HallService;
@@ -15,12 +15,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WorkshopServiceImpl implements WorkshopService {
     @Autowired
-private WorkshopRepo workshopRepo;
-  
+    private WorkshopRepo workshopRepo;
+
 
     @Autowired
     private ModelMapper mapper;
@@ -44,34 +45,50 @@ private WorkshopRepo workshopRepo;
 
     }
 
-    // convert DTO to entity
-    private RegisteredUser mapToEntity(RegisteredUserDto registeredUserDto){
-        RegisteredUser registeredUser = mapper.map(registeredUserDto, RegisteredUser.class);
-        return registeredUser;
-    }
-
     @Override
-    public WorkShopDto userAdded(WorkShopDto workShopDto, long id, long user_id) {
-        Workshop workshop=workshopRepo.findById(id).get();
-        List<RegisteredUser> allUsers=workshop.getUsers();
-        RegisteredUserDto registeredUserDto= registeredUserService.getById(id);
-        RegisteredUser registeredUser=mapToEntity(registeredUserDto);
-        allUsers.add(registeredUser);
-        workshop.setUsers(allUsers);
+    public List<WorkShopDto> getAllWorkshopsByPsychologistId(long id) {
 
-        Workshop updatedWorkshop = workshopRepo.save(workshop);
-        return mapToDTO(updatedWorkshop);
+        List<Workshop> workshops = workshopRepo.getAllWorkshopsByPsychologistId(id);
+        List<WorkShopDto> workShopDtos = new ArrayList<>();
+
+        if (!workshops.isEmpty()) {
+            workShopDtos = workshops.stream()
+                    .map(this::mapToDTO)
+                    .collect(Collectors.toList());
+        }
+
+        return workShopDtos;
     }
 
-    @Override
-    public List<RegisteredUserDto> getAllUsersByWorkshop(long id) {
-        return List.of();
-    }
+// convert DTO to entity
+private RegisteredUser mapToEntity(RegisteredUserDto registeredUserDto){
+    RegisteredUser registeredUser = mapper.map(registeredUserDto, RegisteredUser.class);
+    return registeredUser;
+}
 
-    private RegisteredUserDto mapToDTO(RegisteredUser registeredUser){
-        RegisteredUserDto registeredUserDto = mapper.map(registeredUser, RegisteredUserDto.class);
-        return registeredUserDto;
-    }
+//    @Transactional
+//    @Override
+//    public WorkShopDto userAdded(WorkShopDto workShopDto, long id, long user_id) {
+//        Workshop workshop = workshopRepo.findById(id).get();
+//
+//        RegisteredUser registeredUser = mapToEntity(registeredUserService.getById(user_id));
+//
+//        workshop.getUsers().add(registeredUser);
+//        registeredUser.getWorkshops().add(workshop);
+//
+//        workshop = workshopRepo.saveAndFlush(workshop);
+//        registeredUserService
+//
+//        return mapToDTO(workshop);
+//    }
+
+
+
+
+private RegisteredUserDto mapToDTO(RegisteredUser registeredUser){
+    RegisteredUserDto registeredUserDto = mapper.map(registeredUser, RegisteredUserDto.class);
+    return registeredUserDto;
+}
 
 //    @Override
 //    public List<RegisteredUserDto> getAllUsersByWorkshop(long id) {
@@ -90,15 +107,14 @@ private WorkshopRepo workshopRepo;
 //    }
 
 
-    private WorkShopDto mapToDTO(Workshop workshop){
-        WorkShopDto workShopDto = mapper.map(workshop, WorkShopDto.class);
-        return workShopDto;
-    }
-
-    // convert DTO to entity
-    private Workshop mapToEntity(WorkShopDto workshopDto){
-        Workshop workshop = mapper.map(workshopDto, Workshop.class);
-        return workshop;
-    }
-    
+private WorkShopDto mapToDTO(Workshop workshop){
+    WorkShopDto workShopDto = mapper.map(workshop, WorkShopDto.class);
+    return workShopDto;
 }
+
+// convert DTO to entity
+private Workshop mapToEntity(WorkShopDto workshopDto){
+    Workshop workshop = mapper.map(workshopDto, Workshop.class);
+    return workshop;
+}}
+

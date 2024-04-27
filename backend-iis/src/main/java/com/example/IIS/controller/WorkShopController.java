@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/workshops")
@@ -28,4 +27,16 @@ public class WorkShopController {
         return new ResponseEntity<>(workshopService.createWorkshop(workShopDto), HttpStatus.CREATED);
     }
 
+    @GetMapping("/workshops/{psychologistId}")
+    public List<WorkShopDto> getAllWorkshopsByPsychologistId(@PathVariable long psychologistId) {
+        return workshopService.getAllWorkshopsByPsychologistId(psychologistId);
+    }
+
+//    @PutMapping("/workshops/{id}/users/{userId}")
+//    public WorkShopDto userAdded(@RequestBody WorkShopDto workShopDto, @PathVariable long id, @PathVariable long userId) {
+//        return workshopService.userAdded(workShopDto, id, userId);
+//    }
 }
+
+
+
