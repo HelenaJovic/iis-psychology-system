@@ -14,23 +14,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "registered_user")
-public class RegisteredUser extends User{
+@Table(name = "answers")
+public class Answer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean isStudent;
+    private int points;
 
-
-
-    @ManyToMany
-    @JoinTable(
-            name = "user_workshop",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "workshop_id")
-    )
-    private Set<Workshop> workshops = new HashSet<Workshop>();
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    private Question question;
 
 
 }
