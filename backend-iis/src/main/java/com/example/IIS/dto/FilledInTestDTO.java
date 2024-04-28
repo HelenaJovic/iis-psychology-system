@@ -5,15 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnswerDTO {
+public class FilledInTestDTO {
 
-    private int points;
+    private Date finishedDate;
 
-    private long questionId;
+    private Long registeredUserId;
 
-    private long filledInTestId;
+    private boolean isFinished;
 }
