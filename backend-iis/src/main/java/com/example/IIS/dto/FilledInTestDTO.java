@@ -13,6 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class FilledInTestDTO {
 
+    private Long id;
+
     private Date finishedDate;
 
     private Long registeredUserId;

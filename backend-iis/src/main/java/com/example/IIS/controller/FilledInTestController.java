@@ -32,4 +32,10 @@ public class FilledInTestController {
     public ResponseEntity<List<FilledInTestDTO>> getByUser(@PathVariable Long userId){
         return new ResponseEntity<>(filledInTestService.getByUserId(userId), HttpStatus.OK);
     }
+
+    @PreAuthorize("hasRole('ROLE_REGISTERED_USER')")
+    @PostMapping("/finishTest/{id}")
+    public ResponseEntity<FilledInTestDTO> finishTest(@PathVariable Long id , @RequestBody FilledInTestDTO filledInTestDTO){
+        return new ResponseEntity<>(filledInTestService.finishTest(id), HttpStatus.OK);
+    }
 }

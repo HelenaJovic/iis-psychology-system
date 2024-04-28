@@ -13,6 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class QuestionDTO {
 
+    private long id;
+
     private String text;
 
     private questionCategory category;
