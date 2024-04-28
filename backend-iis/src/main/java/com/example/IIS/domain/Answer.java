@@ -27,5 +27,9 @@ public class Answer {
     @JoinColumn(name = "question_id")
     private Question question;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "filledInTest_id")
+    private FilledInTest filledInTest;
+
 
 }

@@ -33,4 +33,6 @@ public class RegisteredUser extends User{
     private Set<Workshop> workshops = new HashSet<Workshop>();
 
 
+    @OneToMany(mappedBy = "registeredUser", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<FilledInTest> filledInTests = new HashSet<FilledInTest>();
 }

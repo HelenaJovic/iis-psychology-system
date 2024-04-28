@@ -7,14 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "finishedTests")
-public class FinishedTest {
+@Table(name = "filledInTest")
+public class FilledInTest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +24,15 @@ public class FinishedTest {
 
     private Date finishedDate;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    private boolean isFinished;
+
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "registeredUser_id")
     private RegisteredUser registeredUser;
+
+    @OneToMany(mappedBy = "filledInTest", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Answer> answers = new HashSet<Answer>();
+
+
 
 }

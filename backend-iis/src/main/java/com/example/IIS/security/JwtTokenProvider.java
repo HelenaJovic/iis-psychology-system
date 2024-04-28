@@ -28,7 +28,7 @@ public class JwtTokenProvider {
     private long jwtExpirationDate;
 
     // generate JWT token
-    public String generateToken(Authentication authentication){
+    public String generateToken(Authentication authentication, Long id){
         String username = authentication.getName();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
@@ -40,6 +40,7 @@ public class JwtTokenProvider {
 
         String token = Jwts.builder()
                 .claim("role", authorities)
+                .claim("id", id)
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
