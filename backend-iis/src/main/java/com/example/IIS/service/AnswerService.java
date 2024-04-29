@@ -1,5 +1,6 @@
 package com.example.IIS.service;
 
+import com.example.IIS.domain.Answer;
 import com.example.IIS.dto.AnswerDTO;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,6 @@ public interface AnswerService {
     AnswerDTO createAnswer(AnswerDTO answerDTO);
 
     List<AnswerDTO> getAll();
+
+    List<Answer> getByTestId(Long id);
 }

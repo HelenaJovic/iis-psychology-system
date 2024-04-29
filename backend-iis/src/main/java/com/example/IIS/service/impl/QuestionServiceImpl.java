@@ -61,6 +61,12 @@ public class QuestionServiceImpl implements QuestionService {
         return mapToDTO(questionRepository.save(question));
     }
 
+    @Override
+    public QuestionDTO getById(Long id) {
+        Question question = questionRepository.findById(id).get();
+        return mapToDTO(question);
+    }
+
 
     private Question mapToEntity(QuestionDTO questionDTO){
         Question question = mapper.map(questionDTO, Question.class);

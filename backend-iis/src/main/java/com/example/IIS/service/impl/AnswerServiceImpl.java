@@ -59,6 +59,22 @@ public class AnswerServiceImpl implements AnswerService {
         return dtos;
     }
 
+    @Override
+    public List<Answer> getByTestId(Long id) {
+        List<Answer> allAnswers = answerRepository.findAll();
+
+        List<Answer> answersWithTestId = new ArrayList<>();
+
+        for (Answer answer : allAnswers) {
+            if (answer.getFilledInTest().getId().equals(id)) {
+                answersWithTestId.add(answer);
+            }
+        }
+
+        return answersWithTestId;
+
+    }
+
 
     //getByFinishedTestId
 
