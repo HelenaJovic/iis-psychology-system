@@ -4,5 +4,5 @@ import com.example.IIS.dto.TestResultsDTO;
 
 public interface CalculateResultsService {
 
-    TestResultsDTO calculate();
+    TestResultsDTO calculate(long userId);
 }

@@ -30,7 +30,7 @@ public class CalculateResultsServiceImpl implements CalculateResultsService {
     private QuestionService questionService;
 
     @Override
-    public TestResultsDTO calculate() {
+    public TestResultsDTO calculate(long userId) {
        List<FilledInTestDTO> tests= filledInTestService.getByUserId(Long.valueOf(3));
         List<Answer> answers = new ArrayList<Answer>();
 
@@ -64,6 +64,7 @@ public class CalculateResultsServiceImpl implements CalculateResultsService {
            QuestionDTO question = questionService.getById(answer.getQuestion().getId());
 
            if(question.getCategory()== questionCategory.Openness){
+
                OpennesReal += answer.getPoints();
                OpennesCount +=1;
            }
@@ -87,7 +88,9 @@ public class CalculateResultsServiceImpl implements CalculateResultsService {
            }
        }
 
-       return new TestResultsDTO(OpennesReal/OpennesCount*5, ConscietiousnessReal/ConscietiousnessCount*5, ExtraversionReal/ExtraversionCount*5, AgreeablenessReal/AgreeablenessCount*5, NeuroticismReal/NeuroticismCount*5 );
+       System.out.println(ConscietiousnessCount);
+
+       return new TestResultsDTO(OpennesReal/(OpennesCount*5), ConscietiousnessReal/(ConscietiousnessCount*5), ExtraversionReal/(ExtraversionCount*5), AgreeablenessReal/(AgreeablenessCount*5), NeuroticismReal/(NeuroticismCount*5) );
 
     }
 }

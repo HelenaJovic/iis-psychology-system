@@ -50,6 +50,19 @@ VALUES (2, true, 2, 'I find it difficult to get to work.');
 INSERT INTO questions(
     category, is_visible, psychologist_id, text)
 VALUES (4, true, 2, 'I stay in the background.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (3, true, 2, 'I have a kind word for everyone.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (1, true, 2, 'I change my plans frequently.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (2, true, 2, 'I avoid philosophical discussions.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (1, true, 2, 'I seldom feel blue.');
+
 
 
 
