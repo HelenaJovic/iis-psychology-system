@@ -33,14 +33,41 @@ VALUES (false, 4);
 
 --questions--
 INSERT INTO questions(
-                      id, category, is_visible, psychologist_id, text)
-VALUES (1, 0, true, 2, 'neko pitanje');
+                     category, is_visible, psychologist_id, text)
+VALUES (0, true, 2, 'I accept people the way they are.');
 INSERT INTO questions(
-    id, category, is_visible, psychologist_id, text)
-VALUES (2, 3, true, 2, 'kratko pitanje');
+    category, is_visible, psychologist_id, text)
+VALUES (3, true, 2, 'I believe in the importance of art.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (3, true, 2, 'I feel comfortable around people.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (1, true, 2, 'I get chores done right away.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (2, true, 2, 'I find it difficult to get to work.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (4, true, 2, 'I stay in the background.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (3, true, 2, 'I have a kind word for everyone.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (1, true, 2, 'I change my plans frequently.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (2, true, 2, 'I avoid philosophical discussions.');
+INSERT INTO questions(
+    category, is_visible, psychologist_id, text)
+VALUES (1, true, 2, 'I seldom feel blue.');
+
+
+
 
 
 --filledInTests--
 INSERT INTO filled_in_test(
-    id, is_finished, finished_date, registered_user_id)
-VALUES (1, true, '2024-04-28T12:00:00Z' , 3);
+     is_finished, finished_date, registered_user_id)
+VALUES (true, '2024-04-28T12:00:00Z' , 3);

@@ -3,6 +3,8 @@ package com.example.IIS.controller;
 import com.example.IIS.dto.AnswerDTO;
 import com.example.IIS.dto.FilledInTestDTO;
 import com.example.IIS.dto.QuestionDTO;
+import com.example.IIS.dto.TestResultsDTO;
+import com.example.IIS.service.CalculateResultsService;
 import com.example.IIS.service.FilledInTestService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class FilledInTestController {
     @Autowired
     private FilledInTestService filledInTestService;
 
+    @Autowired
+    private CalculateResultsService calculateResultsService;
+
     @PreAuthorize("hasRole('ROLE_REGISTERED_USER')")
     @PostMapping
     public ResponseEntity<FilledInTestDTO> createTest(@Valid @RequestBody FilledInTestDTO filledInTestDTO){
@@ -32,4 +37,17 @@ public class FilledInTestController {
     public ResponseEntity<List<FilledInTestDTO>> getByUser(@PathVariable Long userId){
         return new ResponseEntity<>(filledInTestService.getByUserId(userId), HttpStatus.OK);
     }
+
+    @PreAuthorize("hasRole('ROLE_REGISTERED_USER')")
+    @PostMapping("/finishTest/{id}")
+    public ResponseEntity<FilledInTestDTO> finishTest(@PathVariable Long id , @RequestBody FilledInTestDTO filledInTestDTO){
+        return new ResponseEntity<>(filledInTestService.finishTest(id), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/results/{userId}")
+    public ResponseEntity<TestResultsDTO> calculateResult(@PathVariable Long userId){
+        return new ResponseEntity<>(calculateResultsService.calculate(userId), HttpStatus.OK);
+    }
+
 }

@@ -68,6 +68,14 @@ public class FilledInTestServiceImpl implements FilledInTestService {
 
     }
 
+    @Override
+    public FilledInTestDTO finishTest(Long id) {
+        FilledInTest filledInTest = filledInTestRepository.findById(id).get();
+        filledInTest.setFinished(true);
+        FilledInTest savedTest = filledInTestRepository.save(filledInTest);
+        return mapToDTO(savedTest);
+    }
+
 
     private FilledInTest mapToEntity(FilledInTestDTO filledInTestDTO){
         FilledInTest filledInTest = mapper.map(filledInTestDTO, FilledInTest.class);
