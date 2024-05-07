@@ -31,7 +31,7 @@ public class CalculateResultsServiceImpl implements CalculateResultsService {
 
     @Override
     public TestResultsDTO calculate(long userId) {
-       List<FilledInTestDTO> tests= filledInTestService.getByUserId(Long.valueOf(3));
+       List<FilledInTestDTO> tests= filledInTestService.getByUserId(userId);
         List<Answer> answers = new ArrayList<Answer>();
 
         double OpennesReal =0;
@@ -87,10 +87,17 @@ public class CalculateResultsServiceImpl implements CalculateResultsService {
                ConscietiousnessCount += 1;
            }
        }
+       double opennes = OpennesReal/(OpennesCount*5);
+       double consci = ConscietiousnessReal/(ConscietiousnessCount*5);
+       double extrav = ExtraversionReal/(ExtraversionCount*5);
+       double agree = AgreeablenessReal/(AgreeablenessCount*5);
+       double neuro = NeuroticismReal/(NeuroticismCount*5);
 
-       System.out.println(ConscietiousnessCount);
+       double scale = 1/(opennes + consci + extrav + agree + neuro);
 
-       return new TestResultsDTO(OpennesReal/(OpennesCount*5), ConscietiousnessReal/(ConscietiousnessCount*5), ExtraversionReal/(ExtraversionCount*5), AgreeablenessReal/(AgreeablenessCount*5), NeuroticismReal/(NeuroticismCount*5) );
+        return new TestResultsDTO(opennes*scale, consci * scale, extrav * scale, agree * scale, neuro * scale );
 
     }
+
+
 }

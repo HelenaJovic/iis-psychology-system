@@ -16,4 +16,6 @@ public interface FilledInTestService {
     List<FilledInTestDTO> getByUserId(Long id);
 
     FilledInTestDTO finishTest(Long id);
+
+    List<FilledInTestDTO> getAllFinished();
 }

@@ -50,4 +50,9 @@ public class FilledInTestController {
         return new ResponseEntity<>(calculateResultsService.calculate(userId), HttpStatus.OK);
     }
 
+    @GetMapping("/allFinished")
+    public ResponseEntity<List<FilledInTestDTO>> getAllFinished(){
+        return new ResponseEntity<>(filledInTestService.getAllFinished(), HttpStatus.OK);
+    }
+
 }
