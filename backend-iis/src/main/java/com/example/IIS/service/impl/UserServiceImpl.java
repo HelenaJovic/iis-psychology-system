@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
         return mapToDTO(updatedUser);
     }
 
+    @Override
+    public UserDTO getById(long id) {
+        return mapToDTO(userRepository.findById(id).get());
+    }
+
     private UserDTO mapToDTO(User user){
         UserDTO userDTO = mapper.map(user, UserDTO.class);
         return userDTO;

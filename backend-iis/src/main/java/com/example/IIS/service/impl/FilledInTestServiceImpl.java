@@ -76,6 +76,21 @@ public class FilledInTestServiceImpl implements FilledInTestService {
         return mapToDTO(savedTest);
     }
 
+    @Override
+    public List<FilledInTestDTO> getAllFinished() {
+        List<FilledInTest> tests = filledInTestRepository.findAll();
+        List<FilledInTestDTO> dtos = new ArrayList<>();
+
+        for (FilledInTest filledInTest : tests) {
+            if(filledInTest.isFinished()){
+                dtos.add(mapToDTO(filledInTest));
+            }
+
+        }
+
+        return  dtos;
+    }
+
 
     private FilledInTest mapToEntity(FilledInTestDTO filledInTestDTO){
         FilledInTest filledInTest = mapper.map(filledInTestDTO, FilledInTest.class);
