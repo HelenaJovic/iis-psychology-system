@@ -15,4 +15,6 @@ public interface RegisteredUserService {
     RegisteredUserDto getById(long id);
 
     List<RegisteredUserDto> getUsersByWorkshopId(long id);
+
+
 }

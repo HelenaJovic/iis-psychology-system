@@ -6,10 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.w3c.dom.Text;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -29,15 +32,17 @@ public class Workshop {
 
     private Date date;
 
-    private Time startTime;
+    private String startTime;
 
-    private Time endTime;
+    private String endTime;
 
     private WorkshopCategory category;
 
     private boolean isOnline;
 
     private double price;
+
+
 
     @ElementCollection
     @CollectionTable(name = "workshop_images", joinColumns = @JoinColumn(name = "workshop_id"))
@@ -54,5 +59,8 @@ public class Workshop {
     @JoinColumn(name = "hall_id")
     @ManyToOne(fetch=FetchType.LAZY)
     private Hall hall;
+
+    @OneToMany(mappedBy = "workshop", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<WorkshopTest> workshopsTests = new HashSet<WorkshopTest>();
 
 }

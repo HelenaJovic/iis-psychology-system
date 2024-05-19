@@ -21,6 +21,8 @@ public class RegisteredUser extends User{
 
     private boolean isStudent;
 
+    @OneToMany(mappedBy = "registeredUser", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<WorkshopTestResult> testResults = new HashSet<WorkshopTestResult>();
 
 
 //    @ManyToMany(cascade = CascadeType.ALL)

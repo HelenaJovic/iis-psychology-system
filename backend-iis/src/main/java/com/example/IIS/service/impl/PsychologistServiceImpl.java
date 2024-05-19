@@ -39,4 +39,12 @@ public class PsychologistServiceImpl implements PsychologistService {
 
         PsychologistDto PsyhologistResponse = mapToDTO(newPsychologist);
         return PsyhologistResponse;    }
+
+    @Override
+    public PsychologistDto getById(long id) {
+        Psychologist psychologist=psychologistRepo.findById(id).get();
+        return  mapToDTO(psychologist);
+    }
+
+
 }

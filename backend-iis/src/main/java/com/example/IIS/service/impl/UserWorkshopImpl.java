@@ -63,6 +63,21 @@ public class UserWorkshopImpl implements UserWorkshopService {
         return userWorkshopDtos;
     }
 
+    @Override
+    public UserWorkshopDto cancelWorkshop(long workshopId) {
+        List<UserWorkshopDto> matchedWorkshops = getAll().stream()
+                .filter(workshop -> workshop.getWorkshopId().equals(workshopId))
+                .collect(Collectors.toList());
+        if (!matchedWorkshops.isEmpty()) {
+            for (UserWorkshopDto userWorkshopDto : matchedWorkshops) {
+                userWorkshopDto.setCanceled(true);
+                workshopRepo.save(mapToEntity(userWorkshopDto));
+            }
+            return matchedWorkshops.get(0);
+        }
+        throw new IllegalArgumentException("No workshop found with ID: " + workshopId);
+    }
+
 
 
 }

@@ -19,17 +19,17 @@ public class WorkShopDto {
 
     private String name;
 
-    private String description;
+        private String description;
 
     private Date date;
 
-    private Time startTime;
+    private String startTime;
 
-    private Time endTime;
+    private String endTime;
 
     private WorkshopCategoryDto category;
 
-    private boolean isOnline;
+    private boolean online;
 
     private double price;
 
@@ -38,4 +38,7 @@ public class WorkShopDto {
     private Long psychologistId;
 
     private Long hallId;
+
+
+    private int theme;
 }

@@ -20,6 +20,7 @@ public class Psychologist  extends User{
     private Long id;
     private String biography;
 
+
     @OneToMany(mappedBy = "psychologist", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Workshop> workshops = new HashSet<Workshop>();
 }
