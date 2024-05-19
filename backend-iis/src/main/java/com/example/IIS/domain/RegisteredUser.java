@@ -35,4 +35,16 @@ public class RegisteredUser extends User{
 
     @OneToMany(mappedBy = "registeredUser", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<FilledInTest> filledInTests = new HashSet<FilledInTest>();
+
+    @ManyToMany(mappedBy = "registeredUsers")
+//    @JoinTable(
+//            name = "user_group_session",
+//            joinColumns = @JoinColumn(name = "registered_user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "group_session_id")
+//    )
+    private Set<GroupSession> groupSessions = new HashSet<GroupSession>();
+
+    @OneToMany(mappedBy = "registeredUser", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<IndividualSessions> individualSessions = new HashSet<IndividualSessions>();
 }
+

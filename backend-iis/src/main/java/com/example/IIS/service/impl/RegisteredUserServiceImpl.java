@@ -79,4 +79,10 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         RegisteredUser registeredUser= registeredUserRepo.findById(id).get();
         return mapToDTO(registeredUser);
     }
+
+    @Override
+    public List<RegisteredUser> findAllById(List<Long> ids) {
+        return registeredUserRepo.findAllById(ids);
+
+    }
 }

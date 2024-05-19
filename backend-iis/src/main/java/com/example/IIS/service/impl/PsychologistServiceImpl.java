@@ -30,6 +30,7 @@ public class PsychologistServiceImpl implements PsychologistService {
         return psychologist;
     }
 
+
     @Override
     public PsychologistDto createPsych(PsychologistDto psychologistDto) {
 
@@ -39,4 +40,9 @@ public class PsychologistServiceImpl implements PsychologistService {
 
         PsychologistDto PsyhologistResponse = mapToDTO(newPsychologist);
         return PsyhologistResponse;    }
+
+    @Override
+    public Psychologist getById(Long id) {
+       return psychologistRepo.findById(id).get();
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.IIS.service;
 
+import com.example.IIS.domain.RegisteredUser;
 import com.example.IIS.dto.RegisterDTO;
 import com.example.IIS.dto.RegisteredUserDto;
 import com.example.IIS.dto.WorkShopDto;
@@ -12,4 +13,6 @@ public interface RegisteredUserService {
     List<RegisteredUserDto> getAllUsers();
 
     RegisteredUserDto getById(long id);
+
+    List<RegisteredUser> findAllById(List<Long> ids);
 }
