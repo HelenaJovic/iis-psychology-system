@@ -1,14 +1,14 @@
 package com.example.IIS.domain.enums;
 
 public enum UserRole {
-    REGISTERED_USER,   //ucesnici sesije, radionice i prakse
-    SYSTEM_ADMIN,
-    STUDENT,
+    ROLE_REGISTERED_USER,   //ucesnici sesije, radionice i prakse
+    ROLE_SYSTEM_ADMIN,
+    ROLE_STUDENT,
 
 
-    PSYCHOLOG,
+    ROLE_PSYCHOLOG,
 
-    MANAGER,
+    ROLE_MANAGER,
 
 
 

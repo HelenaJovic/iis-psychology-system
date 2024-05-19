@@ -6,5 +6,6 @@ import com.example.IIS.dto.RegisteredUserDto;
 
 public interface PsychologistService {
     PsychologistDto createPsych(PsychologistDto psychologistDto);
+    PsychologistDto getById(long id);
 
 }

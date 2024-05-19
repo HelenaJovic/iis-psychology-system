@@ -2,6 +2,7 @@ package com.example.IIS.repository;
 
 import com.example.IIS.domain.Role;
 import com.example.IIS.domain.enums.UserRole;
+import com.example.IIS.dto.RoleDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -33,9 +33,10 @@ public class HallServiceImpl implements HallService {
         return hall;
     }
 
+
     @Override
     public List<HallDto> getAllHalls() {
-        List<Hall> halls=hallRepo.findAll();
+        List<Hall> halls=hallRepo.findFreeHalls();
         HallDto hallDto=new HallDto();
         List<HallDto> hallsDto =new ArrayList<HallDto>();
 
@@ -45,5 +46,21 @@ public class HallServiceImpl implements HallService {
 
         }
         return hallsDto;
+    }
+
+    @Override
+    public HallDto findHallByWorkshopId(Long workshopId) {
+        return mapToDTO(hallRepo.findHallByWorkshopId(workshopId));
+    }
+
+    @Override
+    public HallDto saveHall(HallDto hallDto) {
+        Hall hall=hallRepo.save(mapToEntity(hallDto));
+        return mapToDTO(hall);
+    }
+
+    @Override
+    public HallDto findById(long id) {
+        return mapToDTO(hallRepo.findById(id));
     }
 }

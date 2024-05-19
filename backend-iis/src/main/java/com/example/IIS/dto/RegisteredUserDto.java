@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisteredUserDto extends UserDTO{
-    private long id;
+    private Long id;
 
     private boolean isStudent;
 
