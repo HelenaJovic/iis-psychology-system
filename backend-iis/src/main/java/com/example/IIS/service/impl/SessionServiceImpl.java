@@ -4,11 +4,18 @@ import com.example.IIS.domain.Question;
 import com.example.IIS.domain.Session;
 import com.example.IIS.dto.QuestionDTO;
 import com.example.IIS.dto.SessionDTO;
+import com.example.IIS.dto.TimeSlotDTO;
 import com.example.IIS.repository.SessionRepo;
 import com.example.IIS.service.SessionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class SessionServiceImpl implements SessionService {
@@ -25,6 +32,32 @@ public class SessionServiceImpl implements SessionService {
         Session session = mapToEntity(sessionDTO);
         Session savedSession = sessionRepo.save(session);
         return mapToDTO(savedSession);
+    }
+
+    @Override
+    public List<TimeSlotDTO> generateFreeTimeSlots(long psychologistId, LocalDate date) {
+        var takenSlotsMap = getTakenTimeSlots(psychologistId, date);
+        List<TimeSlotDTO> freeTimeSlots = new ArrayList<>();
+
+        for (int i = 8; i <= 14; i += 2) {
+            if (!takenSlotsMap.containsKey(i)) {
+                freeTimeSlots.add(new TimeSlotDTO(LocalTime.of(i, 0), LocalTime.of(i + 2, 0)));
+            }
+        }
+
+        return freeTimeSlots;
+    }
+
+    @Override
+    public HashMap<Integer, Integer> getTakenTimeSlots(long psychologistId, LocalDate date) {
+        List<Session> sessions = sessionRepo.findByPsychologistIdAndDate(psychologistId, date);
+        HashMap<Integer, Integer> takenSlotsMap = new HashMap<>();
+
+        for(Session s:sessions){
+            takenSlotsMap.put(s.getStartTime().getHour(), s.getEndTime().getHour());
+        }
+
+        return takenSlotsMap;
     }
 
     private Session mapToEntity(SessionDTO sessionDTO){

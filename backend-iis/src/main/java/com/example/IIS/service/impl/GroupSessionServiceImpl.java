@@ -6,6 +6,7 @@ import com.example.IIS.domain.RegisteredUser;
 import com.example.IIS.domain.Session;
 import com.example.IIS.dto.GroupSessionDTO;
 import com.example.IIS.dto.SessionDTO;
+import com.example.IIS.dto.TimeSlotDTO;
 import com.example.IIS.repository.GroupSessionRepo;
 import com.example.IIS.repository.SessionRepo;
 import com.example.IIS.service.GroupSessionService;
@@ -15,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,4 +65,8 @@ public class GroupSessionServiceImpl implements GroupSessionService {
         GroupSession savedGroupSession = groupSessionRepo.save(groupSession);
         return mapToDTO(savedGroupSession);
     }
+
+
+
+
 }
