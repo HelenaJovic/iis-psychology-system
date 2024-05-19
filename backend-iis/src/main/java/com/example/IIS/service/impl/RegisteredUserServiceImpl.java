@@ -1,6 +1,8 @@
 package com.example.IIS.service.impl;
 
-import com.example.IIS.domain.*;
+import com.example.IIS.domain.Hall;
+import com.example.IIS.domain.Psychologist;
+import com.example.IIS.domain.RegisteredUser;
 import com.example.IIS.dto.*;
 import com.example.IIS.repository.PsychologistRepo;
 import com.example.IIS.repository.RegisteredUserRepo;
@@ -25,6 +27,8 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
     @Autowired
     private UserWorkshopService userWorkshopService;
 
+
+
     private RegisteredUserDto mapToDTO(RegisteredUser registeredUser){
         RegisteredUserDto registeredUserDto = mapper.map(registeredUser, RegisteredUserDto.class);
         return registeredUserDto;
@@ -45,8 +49,6 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         return registeredUserDto;
 
     }
-
-
 
     @Override
     public List<RegisteredUserDto> getAllUsers() {
@@ -82,5 +84,4 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
         return users;
     }
-
 }

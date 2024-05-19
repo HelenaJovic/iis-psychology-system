@@ -76,3 +76,34 @@ INSERT INTO user_workshops(
 INSERT INTO user_workshops(
 	is_canceled,user_id, workshop_id)
 	VALUES (false, 3, 1);
+	--questions--
+    INSERT INTO questions(
+                         category, is_visible, psychologist_id, text)
+    VALUES (0, true, 5, 'I accept people the way they are.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (3, true, 5, 'I believe in the importance of art.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (3, true, 5, 'I feel comfortable around people.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (1, true, 5, 'I get chores done right away.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (2, true, 5, 'I find it difficult to get to work.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (4, true, 5, 'I stay in the background.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (3, true, 5, 'I have a kind word for everyone.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (1, true, 5, 'I change my plans frequently.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (2, true, 5, 'I avoid philosophical discussions.');
+    INSERT INTO questions(
+        category, is_visible, psychologist_id, text)
+    VALUES (1, true, 5, 'I seldom feel blue.');

@@ -39,8 +39,8 @@ public class User {
     private String image;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "role_id")
     private Role role;
 
 

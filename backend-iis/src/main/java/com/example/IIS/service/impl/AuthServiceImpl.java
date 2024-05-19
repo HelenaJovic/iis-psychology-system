@@ -57,11 +57,12 @@ public class AuthServiceImpl implements AuthService {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUsernameOrEmail(), loginDto.getPassword()));
 
+        User user = userRepository.findByUsername(loginDto.getUsernameOrEmail());
 
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String token = jwtTokenProvider.generateToken(authentication);
+        String token = jwtTokenProvider.generateToken(authentication, user.getId());
 
         return token;
     }
@@ -78,6 +79,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public User register(RegisterDTO registerDto) {
+
 
         // add check for username exists in database
         if (userRepository.existsByUsername(registerDto.getUsername())) {
@@ -99,12 +101,10 @@ public class AuthServiceImpl implements AuthService {
 
         if (registerDto.isRegisterAsStudent()) {
             RegisteredUser registeredUser = new RegisteredUser();
-
-            registeredUser.setRole(roleRepository.findByName("ROLE_STUDENT"));
             registeredUser.setStudent(true);
             registeredUser.setName(registerDto.getName());
             registeredUser.setUsername(registerDto.getUsername());
-            registeredUser.setLastName(registerDto.getLastName());
+            registeredUser.setLastName(registerDto.getLastname());
             registeredUser.setEmail(registerDto.getEmail());
             registeredUser.setPassword(passwordEncoder.encode(registerDto.getPassword()));
             RegisteredUserDto registeredUserDto = mapToDTO(registeredUser);
@@ -115,7 +115,7 @@ public class AuthServiceImpl implements AuthService {
             psychologist.setRole(roleRepository.findByName("ROLE_PSYCHOLOG"));
             psychologist.setName(registerDto.getName());
             psychologist.setUsername(registerDto.getUsername());
-            psychologist.setLastName(registerDto.getLastName());
+            psychologist.setLastName(registerDto.getLastname());
             psychologist.setEmail(registerDto.getEmail());
             psychologist.setPassword(passwordEncoder.encode(registerDto.getPassword()));
             PsychologistDto psychologistDto = mapToDTO(psychologist);
@@ -130,7 +130,7 @@ public class AuthServiceImpl implements AuthService {
             registeredUser.setStudent(false);
             registeredUser.setName(registerDto.getName());
             registeredUser.setUsername(registerDto.getUsername());
-            registeredUser.setLastName(registerDto.getLastName());
+            registeredUser.setLastName(registerDto.getLastname());
             registeredUser.setEmail(registerDto.getEmail());
             registeredUser.setPassword(passwordEncoder.encode(registerDto.getPassword()));
             RegisteredUserDto registeredUserDto = mapToDTO(registeredUser);
