@@ -11,6 +11,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PsychologistServiceImpl implements PsychologistService {
     @Autowired
@@ -44,5 +47,17 @@ public class PsychologistServiceImpl implements PsychologistService {
     @Override
     public Psychologist getById(Long id) {
        return psychologistRepo.findById(id).get();
+    }
+
+    @Override
+    public List<PsychologistDto> getAll() {
+        List<Psychologist> psychologists = psychologistRepo.findAll();
+        List<PsychologistDto> dtos = new ArrayList<>();
+
+        for(Psychologist p: psychologists){
+            dtos.add(mapToDTO(p));
+        }
+
+        return dtos;
     }
 }

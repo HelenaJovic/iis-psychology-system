@@ -66,7 +66,28 @@ public class GroupSessionServiceImpl implements GroupSessionService {
         return mapToDTO(savedGroupSession);
     }
 
+    @Override
+    public List<GroupSessionDTO> getAll() {
+        List<GroupSession> groupSessions = groupSessionRepo.findAll();
+        List<GroupSessionDTO> dtos = new ArrayList<>();
 
+        for(GroupSession gs: groupSessions){
+            dtos.add(mapToDTO(gs));
+        }
+
+        return dtos;
+    }
+
+    @Override
+    public GroupSessionDTO reserveSession(GroupSessionDTO groupSessionDTO, Long registeredUserId) {
+        GroupSession groupSession = groupSessionRepo.findById(groupSessionDTO.getId()).get();
+        System.out.println("AAAAAAAAAAAAAAAAAAAA");
+        System.out.println(groupSession);
+        List<RegisteredUser> users = new ArrayList<>();
+        users.add(registeredUserService.getByIdEntity(registeredUserId));
+        groupSession.setRegisteredUsers(users);
+        return mapToDTO(groupSessionRepo.save(groupSession));
+    }
 
 
 }

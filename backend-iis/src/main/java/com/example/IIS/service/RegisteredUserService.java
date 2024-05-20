@@ -14,5 +14,7 @@ public interface RegisteredUserService {
 
     RegisteredUserDto getById(long id);
 
+    RegisteredUser getByIdEntity(long id);
+
     List<RegisteredUser> findAllById(List<Long> ids);
 }

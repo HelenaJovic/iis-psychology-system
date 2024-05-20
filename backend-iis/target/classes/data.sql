@@ -9,19 +9,25 @@ INSERT INTO users(
 VALUES (2, 'admin@gmail.com', 'adminic', 'admin', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'admin');
 INSERT INTO users(
     role_id, email, last_name, name, password, username)
-VALUES (4, 'psiholog@gmail.com', 'prezime', 'psiholog', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog');
+VALUES (4, 'psiholog@gmail.com', 'Mirko', 'Miric', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog');
 INSERT INTO users(
     role_id, email, last_name, name, password, username)
 VALUES (1, 'ana@gmail.com', 'Boskovic', 'Ana', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'ancica');
 INSERT INTO users(
     role_id, email, last_name, name, password, username)
 VALUES (1, 'mila@gmail.com', 'Maksimovic', 'Mila', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'mili');
+INSERT INTO users(
+    role_id, email, last_name, name, password, username)
+VALUES (4, 'psi@gmail.com', 'Sanja', 'Maksimovic', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog1');
 
 
 
 INSERT INTO psychologist(
                          id, biography)
 VALUES (2,'kratka biografija');
+INSERT INTO psychologist(
+    id, biography)
+VALUES (5,'kratka biografija');
 
 
 INSERT INTO registered_user(

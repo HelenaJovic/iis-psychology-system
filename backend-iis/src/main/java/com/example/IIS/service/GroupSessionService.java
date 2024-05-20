@@ -10,5 +10,7 @@ public interface GroupSessionService {
 
     GroupSessionDTO create(GroupSessionDTO groupSessionDTO);
 
+   List<GroupSessionDTO> getAll();
 
+   GroupSessionDTO reserveSession(GroupSessionDTO groupSessionDTO,Long registeredUserId);
 }

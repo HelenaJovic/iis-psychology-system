@@ -81,6 +81,11 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
     }
 
     @Override
+    public RegisteredUser getByIdEntity(long id) {
+        return registeredUserRepo.findById(id).get();
+    }
+
+    @Override
     public List<RegisteredUser> findAllById(List<Long> ids) {
         return registeredUserRepo.findAllById(ids);
 
