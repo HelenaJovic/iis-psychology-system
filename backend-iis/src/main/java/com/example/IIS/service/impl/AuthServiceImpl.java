@@ -12,6 +12,7 @@ import com.example.IIS.repository.UserRepo;
 import com.example.IIS.security.JwtTokenProvider;
 import com.example.IIS.service.AuthService;
 import com.example.IIS.service.RegisteredUserService;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private PsychologistServiceImpl psychologistService;
 
-
+@Transactional
     @Override
     public String login(LoginDTO loginDto) {
 

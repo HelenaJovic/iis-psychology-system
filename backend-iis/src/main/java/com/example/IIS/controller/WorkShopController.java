@@ -42,6 +42,7 @@ public class WorkShopController {
     public WorkShopDto getWorkshop(@PathVariable("id") long id) {
         return workshopService.getWorkshopById(id);
     }
+    @PreAuthorize("hasRole('ROLE_PSYCHOLOG')")
     @GetMapping("/workshops/{psychologistId}")
     public List<WorkShopDto> getAllWorkshopsByPsychologistId(@PathVariable long psychologistId) {
         return workshopService.getAllWorkshopsByPsychologistId(psychologistId);

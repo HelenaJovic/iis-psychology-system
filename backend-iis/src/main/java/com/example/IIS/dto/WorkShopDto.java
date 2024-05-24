@@ -19,7 +19,7 @@ public class WorkShopDto {
 
     private String name;
 
-        private String description;
+    private String description;
 
     private Date date;
 

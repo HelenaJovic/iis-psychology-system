@@ -1,5 +1,6 @@
 package com.example.IIS.domain;
 
+import com.example.IIS.domain.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -37,6 +38,8 @@ public class User {
     @Column(nullable = false)
     private String password;
     private String image;
+
+    private Gender gender;
 
 
     @ManyToOne(fetch=FetchType.EAGER)

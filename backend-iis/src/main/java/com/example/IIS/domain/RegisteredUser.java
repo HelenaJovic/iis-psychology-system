@@ -25,6 +25,9 @@ public class RegisteredUser extends User{
     @OneToMany(mappedBy = "registeredUser", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<WorkshopTestResult> testResults = new HashSet<WorkshopTestResult>();
 
+    @OneToMany(mappedBy = "registeredUser", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<FeedbackWorkshop> feedbackWorkshops = new HashSet<FeedbackWorkshop>();
+
 
     @ManyToMany
     @JoinTable(

@@ -26,6 +26,9 @@ public interface WorkshopService {
 
     WorkShopDto manageWorkshop(WorkShopDto workShopDto,long id);
 
+    String getWorkshopNameByWorkshopId(long id);
+
+
 
 
 }

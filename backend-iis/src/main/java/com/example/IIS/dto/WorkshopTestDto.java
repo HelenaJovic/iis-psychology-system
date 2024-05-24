@@ -23,12 +23,12 @@ public class WorkshopTestDto {
 
     private Long neededPoints;
 
-    private Date dateFilled;
+    private String name;
 
 
-    private Workshop workshop;
+    private Long workshopId;
 
-    private Set<WorkshopQ> testQuestions = new HashSet<WorkshopQ>();
+    private Set<WorkshopQDto> testQuestions = new HashSet<WorkshopQDto>();
 
-    private Set<WorkshopTestResult> testResults = new HashSet<WorkshopTestResult>();
+//    private Set<Wo> testResults = new HashSet<WorkshopTestResult>();
 }

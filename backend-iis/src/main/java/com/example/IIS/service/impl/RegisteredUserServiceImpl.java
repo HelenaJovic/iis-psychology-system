@@ -3,6 +3,7 @@ package com.example.IIS.service.impl;
 import com.example.IIS.domain.Hall;
 import com.example.IIS.domain.Psychologist;
 import com.example.IIS.domain.RegisteredUser;
+import com.example.IIS.domain.enums.Gender;
 import com.example.IIS.dto.*;
 import com.example.IIS.repository.PsychologistRepo;
 import com.example.IIS.repository.RegisteredUserRepo;
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.IIS.domain.enums.Gender.FEMALE;
+import static com.example.IIS.domain.enums.Gender.MALE;
 
 @Service
 public class RegisteredUserServiceImpl implements RegisteredUserService {
@@ -28,36 +32,35 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
     private UserWorkshopService userWorkshopService;
 
 
-
-    private RegisteredUserDto mapToDTO(RegisteredUser registeredUser){
+    private RegisteredUserDto mapToDTO(RegisteredUser registeredUser) {
         RegisteredUserDto registeredUserDto = mapper.map(registeredUser, RegisteredUserDto.class);
         return registeredUserDto;
     }
 
     // convert DTO to entity
-    private RegisteredUser mapToEntity(RegisteredUserDto registeredUserDto){
+    private RegisteredUser mapToEntity(RegisteredUserDto registeredUserDto) {
         RegisteredUser registeredUser = mapper.map(registeredUserDto, RegisteredUser.class);
         return registeredUser;
     }
 
     @Override
     public RegisteredUserDto createReg(RegisteredUserDto registerDTO) {
-        RegisteredUser registeredUser=mapToEntity(registerDTO);
-        RegisteredUser newRegisteredUser=registeredUserRepo.save(registeredUser);
+        RegisteredUser registeredUser = mapToEntity(registerDTO);
+        RegisteredUser newRegisteredUser = registeredUserRepo.save(registeredUser);
 
-        RegisteredUserDto registeredUserDto=mapToDTO(newRegisteredUser);
+        RegisteredUserDto registeredUserDto = mapToDTO(newRegisteredUser);
         return registeredUserDto;
 
     }
 
     @Override
     public List<RegisteredUserDto> getAllUsers() {
-        List<RegisteredUser> users=registeredUserRepo.findAll();
-        RegisteredUserDto registeredUserDto=new RegisteredUserDto();
-        List<RegisteredUserDto> registeredUserDtos =new ArrayList<RegisteredUserDto>();
+        List<RegisteredUser> users = registeredUserRepo.findAll();
+        RegisteredUserDto registeredUserDto = new RegisteredUserDto();
+        List<RegisteredUserDto> registeredUserDtos = new ArrayList<RegisteredUserDto>();
 
         for (RegisteredUser registeredUser : users) {
-            registeredUserDto=mapToDTO(registeredUser);
+            registeredUserDto = mapToDTO(registeredUser);
             registeredUserDtos.add(registeredUserDto);
 
         }
@@ -66,7 +69,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
     @Override
     public RegisteredUserDto getById(long id) {
-        RegisteredUser registeredUser= registeredUserRepo.findById(id).get();
+        RegisteredUser registeredUser = registeredUserRepo.findById(id).get();
         return mapToDTO(registeredUser);
     }
 
@@ -84,4 +87,48 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
         return users;
     }
+
+    @Override
+    public List<RegisteredUserDto> getFemalesByWorkshopId(long id) {
+        List<RegisteredUserDto> users = new ArrayList<>();
+        List<UserWorkshopDto> list = userWorkshopService.getAll();
+
+        for (UserWorkshopDto workshop : list) {
+            if (workshop.getWorkshopId().equals(id)) {
+                RegisteredUserDto registeredUserDto = getById(workshop.getUserId());
+
+                if (registeredUserDto.getGender().equals(FEMALE)) {
+                    users.add(registeredUserDto);
+                }
+
+            }
+
+        }
+        return users;
+
+    }
+
+    @Override
+    public List<RegisteredUserDto> getMalesByWorkshopId(long id) {
+        List<RegisteredUserDto> users = new ArrayList<>();
+        List<UserWorkshopDto> list = userWorkshopService.getAll();
+
+        for (UserWorkshopDto workshop : list) {
+            if (workshop.getWorkshopId().equals(id)) {
+                RegisteredUserDto registeredUserDto = getById(workshop.getUserId());
+
+                if (registeredUserDto.getGender().equals(MALE)) {
+                    users.add(registeredUserDto);
+                }
+
+            }
+
+        }
+        return users;
+
+    }
+
+
+
+
 }

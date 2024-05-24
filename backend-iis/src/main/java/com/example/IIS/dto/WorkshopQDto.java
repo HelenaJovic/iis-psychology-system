@@ -29,7 +29,7 @@ public class WorkshopQDto {
     private List<String> images;
 
 
-    private WorkshopTest workshopTest;
+    private long workshopTestId;
 
-    private Set<WorkshopA> testAnswers = new HashSet<WorkshopA>();
+    private Set<WorkshopADto> testAnswers = new HashSet<WorkshopADto>();
 }

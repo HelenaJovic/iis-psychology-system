@@ -21,7 +21,6 @@ public class WorkshopA {
 
     private String text;
 
-    private Long pointsPerQuestion;
 
     private boolean isTrue;
 

@@ -16,5 +16,7 @@ public interface RegisteredUserService {
 
     List<RegisteredUserDto> getUsersByWorkshopId(long id);
 
+     List<RegisteredUserDto> getFemalesByWorkshopId(long id) ;
 
-}
+    public List<RegisteredUserDto> getMalesByWorkshopId(long id) ;
+    }

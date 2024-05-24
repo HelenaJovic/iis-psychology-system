@@ -23,7 +23,9 @@ public class WorkshopTestResult {
     private Long id;
 
 
-    private Long neededPoints;
+    private Long achievedPoints;
+
+    private boolean isPassed;
 
     private Date dateFilled;
 

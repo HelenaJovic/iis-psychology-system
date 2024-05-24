@@ -23,18 +23,17 @@ public class WorkshopTest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private String name;
     private Long neededPoints;
 
-    private Date dateFilled;
 
     @JoinColumn(name = "workshop_id")
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Workshop workshop;
 
-    @OneToMany(mappedBy = "workshopTest", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "workshopTest", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<WorkshopQ> testQuestions = new HashSet<WorkshopQ>();
 
-    @OneToMany(mappedBy = "workshopTest", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "workshopTest", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<WorkshopTestResult> testResults = new HashSet<WorkshopTestResult>();
 }
