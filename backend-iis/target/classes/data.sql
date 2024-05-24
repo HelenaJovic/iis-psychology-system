@@ -1,27 +1,27 @@
-INSERT INTO roles (name) VALUES ('ROLE_REGISTERED_USER');
-INSERT INTO roles (name) VALUES ('ROLE_SYSTEM_ADMIN');
-INSERT INTO roles (name) VALUES ('ROLE_STUDENT');
-INSERT INTO roles (name) VALUES ('ROLE_PSYCHOLOG');
-INSERT INTO roles (name) VALUES ('ROLE_MANAGER');
+INSERT INTO role (name) VALUES ('ROLE_REGISTERED_USER');
+INSERT INTO role (name) VALUES ('ROLE_SYSTEM_ADMIN');
+INSERT INTO role (name) VALUES ('ROLE_STUDENT');
+INSERT INTO role (name) VALUES ('ROLE_PSYCHOLOG');
+INSERT INTO role (name) VALUES ('ROLE_MANAGER');
 
 INSERT INTO users(
-     role_id, email,image, last_name, name, password, username)
-VALUES (2, 'admin@gmail.com', 'https://pacifichealthsystems.com/wp-content/uploads/2020/11/Psychologist-san-diego.jpg','adminic', 'admin', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'admin');
+     gender,role_id, email,image, last_name, name, password, username)
+VALUES (0,2, 'admin@gmail.com', 'https://pacifichealthsystems.com/wp-content/uploads/2020/11/Psychologist-san-diego.jpg','adminic', 'admin', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'admin');
 INSERT INTO users(
-     role_id, email,image, last_name, name, password, username)
-VALUES (1, 'user1@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'user1', 'user1', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'user1');
+    gender, role_id, email,image, last_name, name, password, username)
+VALUES (0,1, 'user1@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'user1', 'user1', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'user1');
 INSERT INTO users(
-     role_id, email,image, last_name, name, password, username)
-VALUES (1, 'user2@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'user2', 'user2', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'user2');
+     gender,role_id, email,image, last_name, name, password, username)
+VALUES (0,1, 'user2@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'user2', 'user2', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'user2');
 INSERT INTO users(
-     role_id, email,image, last_name, name, password, username)
-VALUES (1, 'user3@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'user3', 'user3', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'user3');
+    gender, role_id, email,image, last_name, name, password, username)
+VALUES (1,1, 'user3@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'user3', 'user3', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'user3');
 INSERT INTO users(
-     role_id, email,image, last_name, name, password, username)
-VALUES (4, 'psiholog@gmail.com','https://pacifichealthsystems.com/wp-content/uploads/2020/11/Psychologist-san-diego.jpg', 'psiho', 'psiho', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog');
+     gender,role_id, email,image, last_name, name, password, username)
+VALUES (1,4, 'psiholog@gmail.com','https://pacifichealthsystems.com/wp-content/uploads/2020/11/Psychologist-san-diego.jpg', 'psiho', 'psiho', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog');
 INSERT INTO users(
-     role_id, email,image, last_name, name, password, username)
-VALUES (4, 'psiholo2g@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'psiho2', 'psiho2', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog2');
+    gender, role_id, email,image, last_name, name, password, username)
+VALUES (1,4, 'psiholo2g@gmail.com','https://online.maryville.edu/wp-content/uploads/sites/97/2023/09/female-psychologist-1-e1590109152979.jpg', 'psiho2', 'psiho2', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog2');
 
 
 INSERT INTO halls(
