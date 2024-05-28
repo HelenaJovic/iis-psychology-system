@@ -4,6 +4,7 @@ import com.example.IIS.domain.InternshipTest;
 import com.example.IIS.domain.StudentInternship;
 import com.example.IIS.domain.StudentTest;
 import com.example.IIS.dto.InternshipTestDto;
+import com.example.IIS.dto.ReportDto;
 import com.example.IIS.dto.StudentInternshipDto;
 import com.example.IIS.repository.StudentInternshipRepo;
 import com.example.IIS.service.StudentInternshipService;
@@ -11,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,6 +29,11 @@ public class StudentInternshipServiceImpl implements StudentInternshipService {
         return dto;
     }
 
+    private ReportDto mapToReportDto(StudentInternship studentInternship){
+        ReportDto dto = mapper.map(studentInternship, ReportDto.class);
+        return dto;
+    }
+
     private StudentInternship mapToEntity(StudentInternshipDto dto){
         StudentInternship studentInternship = mapper.map(dto, StudentInternship.class);
         return studentInternship;
@@ -39,6 +46,7 @@ public class StudentInternshipServiceImpl implements StudentInternshipService {
             StudentInternship studentInternship = new StudentInternship();
             studentInternship.setInternship(studentTest.getInternshipTest().getInternship());
             studentInternship.setStudent(studentTest.getStudent());
+            studentInternship.setEndDate(LocalDate.now().plusMonths(1));
             studentInternshipRepo.save(studentInternship);
         }
     }
@@ -59,5 +67,14 @@ public class StudentInternshipServiceImpl implements StudentInternshipService {
             return mapToDTO(studentInternship);
         }
         return null;
+    }
+
+    @Override
+    public ReportDto GetFinishedInternshipByStudentId(long id) {
+        StudentInternship studentInternship = studentInternshipRepo.getStudentInternshipByStudent_Id(id);
+        if(studentInternship != null && studentInternship.getEndDate().isBefore(LocalDate.now())){
+            return mapToReportDto(studentInternship);
+        }
+        return  null;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.IIS.service;
 
 import com.example.IIS.domain.StudentTest;
+import com.example.IIS.dto.ReportDto;
 import com.example.IIS.dto.StudentInternshipDto;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface StudentInternshipService {
     StudentInternshipDto GetByStudent(long id);
 
     StudentInternshipDto GetByPsychologist(long id);
+
+    ReportDto GetFinishedInternshipByStudentId(long id);
 }

@@ -56,4 +56,13 @@ public class TaskServiceImpl implements TaskService {
     public void createTask(TaskDto taskDto) {
         taskRepo.save(mapToEntity(taskDto));
     }
+
+    @Override
+    public void updateTask(TaskDto taskDto) {
+        Task task = taskRepo.findById(taskDto.getId()).orElse(null);
+        task.setStatus(StudentInternshipStatus.DONE);
+        if (task != null){
+            taskRepo.save(task);
+        }
+    }
 }

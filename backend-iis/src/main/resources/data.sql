@@ -6,7 +6,7 @@ INSERT INTO role (name) VALUES ('ROLE_MANAGER');
 
 INSERT INTO users(
     role_id, email, last_name, name, password, username, image_url)
-VALUES (2, 'admin@gmail.com', 'adminic', 'admin', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'admin', 'https://cdn-icons-png.flaticon.com/512/219/219969.png');
+VALUES (2, 'admin@gmail.com', 'Peric', 'Sasa', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'admin', 'https://cdn-icons-png.flaticon.com/512/219/219969.png');
 
 
 INSERT INTO users(role_id, email, last_name, name, password, username, image_url)
@@ -73,17 +73,17 @@ VALUES (4, 'psiholog@gmail.com', 'Knezevic', 'Zarko', '$2a$12$gjNONuZTM43S47DRK2
 INSERT INTO psychologist(id, biography)
 VALUES (1, 'skolovani psiholog spreman na sve');
 
-INSERT INTO student_internship(internship_id, psychologist_id, student_id)
-VALUES (2, 1, 2);
+INSERT INTO student_internship(internship_id, psychologist_id, student_id, end_date)
+VALUES (2, 1, 2, '2024-05-25');
 
 INSERT INTO task(student_internship_id, title, description, status, priority)
 VALUES (1, 'Adolescent Assessment Assistance', 'Assist in administering psychological assessments to adolescents, including scoring and report compilation.', 3, 1);
 
 INSERT INTO task(student_internship_id, title, description, status, priority)
-VALUES (1, 'Child Development Observation', 'Conduct observational research on child development, including participant recruitment and data analysis.', 2, 2);
+VALUES (1, 'Child Development Observation', 'Conduct observational research on child development, including participant recruitment and data analysis.', 1, 2);
 
 INSERT INTO task(student_internship_id, title, description, status, priority)
 VALUES (1, 'Mental Health Awareness Workshops', 'Assist in providing psychoeducation workshops on mental health, including content development and facilitation.', 0, 2);
 
 INSERT INTO task(student_internship_id, title, description, status, priority)
-VALUES (1, 'Parenting Skills Workshop Development', ' Develop workshops on parenting skills, covering topics such as communication and discipline techniques.', 0, 1);
+VALUES (1, 'Parenting Skills Workshop Development', ' Develop workshops on parenting skills, covering topics such as communication and discipline techniques.', 1, 1);

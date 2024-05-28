@@ -1,9 +1,6 @@
 package com.example.IIS.controller;
 
-import com.example.IIS.dto.RegisterDTO;
-import com.example.IIS.dto.StudentDto;
-import com.example.IIS.dto.StudentInternshipDto;
-import com.example.IIS.dto.TaskDto;
+import com.example.IIS.dto.*;
 import com.example.IIS.service.StudentInternshipService;
 import com.example.IIS.service.StudentTestService;
 import com.example.IIS.service.TaskService;
@@ -57,6 +54,25 @@ public class StudentInternshipController {
     public ResponseEntity<Void> createTask(@RequestBody TaskDto taskDto){
         _taskService.createTask(taskDto);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PutMapping
+    @PermitAll
+    public ResponseEntity<Void> updateTask(@RequestBody TaskDto taskDto){
+        _taskService.updateTask(taskDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/finishedInternship/{id}")
+    public ResponseEntity<ReportDto> getFinishedInternshipByStudentId(@PathVariable(name="id") long id){
+        ReportDto report= _studentInternshipService.GetFinishedInternshipByStudentId(id);
+        if(report != null){
+            return new ResponseEntity<>(report, HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/upload-pdf")

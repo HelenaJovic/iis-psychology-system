@@ -4,4 +4,6 @@ import com.example.IIS.dto.TaskDto;
 
 public interface TaskService {
     void createTask(TaskDto taskDto);
+
+    void updateTask(TaskDto taskDto);
 }
