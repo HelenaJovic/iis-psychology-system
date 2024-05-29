@@ -73,5 +73,18 @@ VALUES (1, true, 2, 'I seldom feel blue.');
 
 
 
---filledInTests--
+--individualSession--
+INSERT INTO public.session(
+    date, end_time, start_time, psychologist_id)
+VALUES ('2024-05-19', '10:00:00', '08:00:00',  2);
+INSERT INTO public.session(
+    date, end_time, start_time, psychologist_id)
+VALUES ('2024-08-15', '12:00:00', '10:00:00',  2);
+
+INSERT INTO public.individual_session(
+    id, registered_user_id, session_goal)
+VALUES ( 1, 3, 'Improve self-confidence');
+INSERT INTO public.individual_session(
+    id, registered_user_id, session_goal)
+VALUES ( 2, 4, 'Anxiety');
 

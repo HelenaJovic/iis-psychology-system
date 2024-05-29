@@ -2,10 +2,13 @@ package com.example.IIS.service.impl;
 
 import com.example.IIS.domain.Question;
 import com.example.IIS.domain.Session;
+import com.example.IIS.domain.SessionDocumentation;
 import com.example.IIS.dto.QuestionDTO;
 import com.example.IIS.dto.SessionDTO;
+import com.example.IIS.dto.SessionReportDTO;
 import com.example.IIS.dto.TimeSlotDTO;
 import com.example.IIS.repository.SessionRepo;
+import com.example.IIS.service.SessionDocumentationService;
 import com.example.IIS.service.SessionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class SessionServiceImpl implements SessionService {
     @Autowired
     private SessionRepo sessionRepo;
 
+    @Autowired
+    private SessionDocumentationService sessionDocumentationService;
 
     @Override
     public SessionDTO create(SessionDTO sessionDTO) {
@@ -58,6 +63,26 @@ public class SessionServiceImpl implements SessionService {
         }
 
         return takenSlotsMap;
+    }
+
+    @Override
+    public SessionReportDTO generateReport(long sessionDocumentId) {
+
+        SessionDocumentation sessionDocumentation = sessionDocumentationService.getById(sessionDocumentId);
+
+        SessionReportDTO report = new SessionReportDTO();
+
+        report.setSessionTopic(sessionDocumentation.getTopicSummary());
+        report.setPlan(sessionDocumentation.getPlan());
+        report.setEmotionalReactions(sessionDocumentation.getEmotionalReactions());
+        report.setGoal(sessionDocumentation.getIndividualSessions().getSessionGoal());
+        report.setDate(sessionDocumentation.getIndividualSessions().getDate());
+        report.setStartTime(sessionDocumentation.getIndividualSessions().getStartTime());
+        report.setEndTime(sessionDocumentation.getIndividualSessions().getEndTime());
+        report.setFirstName(sessionDocumentation.getIndividualSessions().getRegisteredUser().getName());
+        report.setLastName(sessionDocumentation.getIndividualSessions().getRegisteredUser().getLastName());
+
+        return report;
     }
 
     private Session mapToEntity(SessionDTO sessionDTO){

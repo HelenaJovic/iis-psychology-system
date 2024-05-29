@@ -1,6 +1,7 @@
 package com.example.IIS.service;
 
 import com.example.IIS.dto.SessionDTO;
+import com.example.IIS.dto.SessionReportDTO;
 import com.example.IIS.dto.TimeSlotDTO;
 
 import java.time.LocalDate;
@@ -14,4 +15,6 @@ public interface SessionService {
     List<TimeSlotDTO> generateFreeTimeSlots(long psychologistId, LocalDate date);
 
     HashMap<Integer, Integer> getTakenTimeSlots(long psychologistId, LocalDate date);
+
+    SessionReportDTO generateReport(long sessionDocumentId);
 }
