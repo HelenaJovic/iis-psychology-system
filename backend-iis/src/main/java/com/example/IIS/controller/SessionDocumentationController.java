@@ -33,4 +33,18 @@ public class SessionDocumentationController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_PSYCHOLOG')")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<SessionDocumentationDTO> deleteSessionDocumentation(@PathVariable Long id){
+        return new ResponseEntity<>(sessionDocumentationService.delete(id), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_PSYCHOLOG')")
+    @PutMapping("/update/{id}")
+    public ResponseEntity<SessionDocumentationDTO> updateSessionDocumentation(@Valid @RequestBody SessionDocumentationDTO sessionDocumentationDTO, @PathVariable Long id){
+        return new ResponseEntity<>(sessionDocumentationService.update(sessionDocumentationDTO, id), HttpStatus.OK);
+    }
+
+
+
 }

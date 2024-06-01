@@ -81,7 +81,7 @@ public class GroupSessionServiceImpl implements GroupSessionService {
     @Override
     public GroupSessionDTO reserveSession(GroupSessionDTO groupSessionDTO, Long registeredUserId) {
         GroupSession groupSession = groupSessionRepo.findById(groupSessionDTO.getId()).get();
-        System.out.println("AAAAAAAAAAAAAAAAAAAA");
+
         System.out.println(groupSession);
         List<RegisteredUser> users = new ArrayList<>();
         users.add(registeredUserService.getByIdEntity(registeredUserId));

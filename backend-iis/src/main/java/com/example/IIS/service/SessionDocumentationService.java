@@ -14,4 +14,9 @@ public interface SessionDocumentationService {
 
     SessionDocumentation getById(Long id);
 
+
+    SessionDocumentationDTO delete(Long id);
+
+    SessionDocumentationDTO update(SessionDocumentationDTO documentationDTO, Long id);
+
 }

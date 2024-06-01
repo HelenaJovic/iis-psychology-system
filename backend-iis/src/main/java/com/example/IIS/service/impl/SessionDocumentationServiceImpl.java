@@ -54,6 +54,25 @@ public class SessionDocumentationServiceImpl implements SessionDocumentationServ
         return sessionDocumentationRepo.findById(id).get();
     }
 
+    @Override
+    public SessionDocumentationDTO delete(Long id) {
+        SessionDocumentation documentation = sessionDocumentationRepo.findById(id).get();
+        sessionDocumentationRepo.delete(documentation);
+        return mapToDTO(documentation);
+    }
+
+    @Override
+    public SessionDocumentationDTO update(SessionDocumentationDTO documentationDTO, Long id) {
+        SessionDocumentation documentation = sessionDocumentationRepo.findById(id).get();
+        documentation.setTopicSummary(documentationDTO.getTopicSummary());
+        documentation.setEmotionalReactions(documentationDTO.getEmotionalReactions());
+        documentation.setPlan(documentationDTO.getPlan());
+        documentation.setIndividualSessions(individualSessionService.getById(documentationDTO.getIndividualSessionId()));
+        sessionDocumentationRepo.save(documentation);
+
+        return mapToDTO(documentation);
+    }
+
 
     private SessionDocumentation mapToEntity(SessionDocumentationDTO sessionDocumentationDTO){
         SessionDocumentation sessionDocumentation = mapper.map(sessionDocumentationDTO, SessionDocumentation.class);
