@@ -26,7 +26,7 @@ public class FeedbackWorkshop {
     private Long priceGrade;
 
 
-    private boolean isRecommended;
+    private boolean recommended;
 
     private String comment;
 

@@ -66,7 +66,7 @@ public class FeedbackWorkshopServiceImpl implements FeedbackWorkshopService {
         workshopEvaluationDto.setTotalPsychologicalGrade(getTotalPsychologistGrade(workshopId));
         workshopEvaluationDto.setNumberRecommended(getNumberOfRecommended(workshopId));
         workshopEvaluationDto.setNumberNotRecommended(getAllByWorkshopId(workshopId).size()-getNumberOfRecommended(workshopId));
-
+        workshopEvaluationDto.setFeedbackWorkshopDtoList(getAllByWorkshopId(workshopId));
 
         return  workshopEvaluationDto;
     }

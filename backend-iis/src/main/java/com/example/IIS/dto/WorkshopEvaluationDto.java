@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -24,4 +26,5 @@ public class WorkshopEvaluationDto {
     private double totalPriceGrade;
     private int numberRecommended;
     private int numberNotRecommended;
+    private List<FeedbackWorkshopDto> feedbackWorkshopDtoList;
 }
