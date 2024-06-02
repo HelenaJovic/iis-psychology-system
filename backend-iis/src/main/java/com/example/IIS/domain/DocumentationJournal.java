@@ -32,4 +32,6 @@ public class DocumentationJournal {
     private String emotionalReactions;
 
     private String plan;
+
+    private Long documentationId;
 }

@@ -26,6 +26,8 @@ public class DocumentationJournalDTO {
 
     private String plan;
 
+    private Long documentationId;
+
 
 //    CREATE OR REPLACE FUNCTION session_documentation_changes()
 //    RETURNS TRIGGER AS $$
