@@ -19,6 +19,9 @@ VALUES (1, 'mila@gmail.com', 'Maksimovic', 'Mila', '$2a$10$QZbtkoO3UqIW8ataNZzkJ
 INSERT INTO users(
     role_id, email, last_name, name, password, username)
 VALUES (4, 'psi@gmail.com', 'Sanja', 'Maksimovic', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'psiholog1');
+INSERT INTO users(
+    role_id, email, last_name, name, password, username)
+VALUES (1, 'nina@gmail.com', 'Nina', 'Knezevic', '$2a$10$QZbtkoO3UqIW8ataNZzkJuRHQqsvD5vaAmVUNFxQPIZZ8X0D9iTSu', 'nina');
 
 
 

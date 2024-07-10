@@ -17,5 +17,7 @@ public class GroupSessionDTO extends SessionDTO {
 
     private String topic;
 
+    private String description;
+
     private List<Long> registeredUserIds;
 }

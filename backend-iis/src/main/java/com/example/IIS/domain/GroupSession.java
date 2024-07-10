@@ -23,6 +23,8 @@ public class GroupSession extends Session{
 
     private String topic;
 
+    private String description;
+
     @ManyToMany
     private List<RegisteredUser> registeredUsers;
 }
