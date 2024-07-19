@@ -13,7 +13,12 @@ import lombok.Setter;
 public class RegisterDTO {
     private String name;
     private String username;
+    private String lastname;
     private String email;
     private String password;
+    private boolean registerAsStudent;
+    private boolean registerAsPsychologist;
+    private boolean registerAsManager;
+
 
 }
