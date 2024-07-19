@@ -18,12 +18,14 @@ public class TestResultDto {
     private Long id;
 
 
-    private Long neededPoints;
+    private Long achievedPoints;
+
+    private boolean isPassed;
 
     private Date dateFilled;
 
-    private WorkshopTest workshopTest;
+    private WorkshopTestDto workshopTest;
 
-    private RegisteredUser registeredUser;
+    private RegisteredUserDto registeredUser;
 
 }

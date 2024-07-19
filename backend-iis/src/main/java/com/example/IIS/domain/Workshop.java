@@ -61,6 +61,9 @@ public class Workshop {
     private Hall hall;
 
     @OneToMany(mappedBy = "workshop", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<FeedbackWorkshop> feedbackWorkshops = new HashSet<FeedbackWorkshop>();
+
+    @OneToMany(mappedBy = "workshop", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<WorkshopTest> workshopsTests = new HashSet<WorkshopTest>();
 
 }

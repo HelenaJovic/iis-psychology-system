@@ -18,12 +18,10 @@ public class WorkshopADto {
 
     private String text;
 
-    private Long pointsPerQuestion;
-
     private boolean isTrue;
 
 
     private List<String> images;
 
-    private WorkshopQ workshopQ;
+    private long workshopQId;
 }

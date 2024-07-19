@@ -171,6 +171,11 @@ public class WorkshopServiceImpl implements WorkshopService {
         return mapToDTO(workshopRepo.save(workshop));
     }
 
+    @Override
+    public String getWorkshopNameByWorkshopId(long id) {
+        return workshopRepo.getWorkshopNameById(id);
+    }
+
 
     // convert DTO to entity
 private RegisteredUser mapToEntity(RegisteredUserDto registeredUserDto){

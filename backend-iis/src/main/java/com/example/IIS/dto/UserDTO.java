@@ -1,6 +1,7 @@
 package com.example.IIS.dto;
 
 import com.example.IIS.domain.Role;
+import com.example.IIS.domain.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,6 @@ public class UserDTO {
     private String username;
     private String email;
     private String password;
-    private Role role;
     private String image;
+    private Gender gender;
 }
