@@ -15,7 +15,7 @@ Welcome to the Psychological Clinic Application! This repository contains the so
 - **Columnar Database (Cassandra):** Employed for the analytical processing of workshop data.
 - **Relational Database (PostgreSQL):** Used for managing relational data, particularly within the workshops subsystem.
 
-### Frontend
+### Frontend https://github.com/HelenaJovic/iis-frontend
 - **Angular:** The frontend of the application is built using Angular, offering a dynamic and responsive user interface.
 
 ## Subsystems
