@@ -50,7 +50,7 @@ public class InternshipController {
         InternshipTest test = testService.updateTest(dto);
         test.setTime(LocalTime.of(parseInt(dto.getTime()), 0, 0));
         if (test != null) {
-            emailSender.sendEmail(dto);
+           // emailSender.sendEmail(dto);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

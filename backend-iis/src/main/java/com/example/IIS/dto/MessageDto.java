@@ -1,26 +1,32 @@
 package com.example.IIS.dto;
 
-import com.example.IIS.domain.Internship;
 import com.example.IIS.domain.Psychologist;
 import com.example.IIS.domain.Student;
-import com.example.IIS.domain.Task;
-import jakarta.persistence.*;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentInternshipDto {
+public class MessageDto {
     private Long id;
+
     private Long studentId;
+    private String studentName;
+
     private Long psychologistId;
-    private int studentInternshipPoints;
-    private Set<TaskDto> tasks;
-    private Set<String> comments;
+    private String psychologistName;
+
+    private Long studentInternshipId;
+
+    private String content;
+
+    private boolean read;
+
+    private String sender;
 }

@@ -37,5 +37,8 @@ public class StudentInternship {
     @Column(name="end_date")
     private LocalDate endDate;
 
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "internship_comments", joinColumns = @JoinColumn(name = "internship_id"))
+    @Column(name = "comment")
+    private Set<String> comments;
 }

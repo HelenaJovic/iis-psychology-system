@@ -52,6 +52,21 @@ public class TaskServiceImpl implements TaskService {
         return null;
     }
 
+    private StudentInternshipStatus mapStatus(TaskDto taskDto) {
+        String status = taskDto.getStatus().toUpperCase();
+        if (status.equals(StudentInternshipStatus.IN_PROGRESS.toString())) {
+            return StudentInternshipStatus.IN_PROGRESS;
+        } else if (status.equals(StudentInternshipStatus.DONE.toString())) {
+            return StudentInternshipStatus.DONE;
+        } else if (status.equals(StudentInternshipStatus.NOT_REVIEWED.toString())) {
+            return StudentInternshipStatus.NOT_REVIEWED;
+        } else if (status.equals(StudentInternshipStatus.STUCK.toString())) {
+            return StudentInternshipStatus.STUCK;
+        }
+        return null;
+    }
+
+
     @Override
     public void createTask(TaskDto taskDto) {
         taskRepo.save(mapToEntity(taskDto));
@@ -60,7 +75,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void updateTask(TaskDto taskDto) {
         Task task = taskRepo.findById(taskDto.getId()).orElse(null);
-        task.setStatus(StudentInternshipStatus.DONE);
+        task.setStatus(mapStatus(taskDto));
         if (task != null){
             taskRepo.save(task);
         }

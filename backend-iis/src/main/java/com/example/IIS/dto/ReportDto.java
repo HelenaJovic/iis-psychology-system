@@ -21,4 +21,5 @@ public class ReportDto {
     private Set<TaskDto> tasks;
     private String internshipTitle;
     private LocalDate endDate;
+    private Set<String> studentInternshipComments;
 }

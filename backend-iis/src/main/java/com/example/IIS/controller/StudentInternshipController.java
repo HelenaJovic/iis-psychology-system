@@ -48,6 +48,26 @@ public class StudentInternshipController {
         }
     }
 
+    @GetMapping("/by-psychologist2/{id}")
+    public ResponseEntity<StudentInternshipDto> getByPsychologist2(@PathVariable(name = "id") long id){
+        StudentInternshipDto dto = _studentInternshipService.GetByPsychologist2(id);
+        if (dto != null) {
+            return new ResponseEntity<>(dto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/all-by-psychologist/{id}")
+    public ResponseEntity<List<StudentInternshipDto>> getAllByPsychologist(@PathVariable(name = "id") long id){
+        List<StudentInternshipDto> dto = _studentInternshipService.GetALLByPsychologist(id);
+        if (dto != null) {
+            return new ResponseEntity<>(dto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @CrossOrigin
     @PostMapping
     @PermitAll
@@ -61,6 +81,14 @@ public class StudentInternshipController {
     @PermitAll
     public ResponseEntity<Void> updateTask(@RequestBody TaskDto taskDto){
         _taskService.updateTask(taskDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PutMapping(value ="/update-internship/{id}", consumes = "text/plain")
+    @PermitAll
+    public ResponseEntity<Void> updateInternship(@RequestBody String comment, @PathVariable(name="id") long id){
+        _studentInternshipService.updateInternship(comment, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -101,4 +129,37 @@ public class StudentInternshipController {
             return new ResponseEntity<>("Failed to upload file", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/messages/{studentInternshipId}")
+    public ResponseEntity<List<MessageDto>> getMessagesByStudentInternshipId(@PathVariable(name = "studentInternshipId") long studentInternshipId){
+        List<MessageDto> messages = _studentInternshipService.getMessagesById(studentInternshipId);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
+
+    @GetMapping("/num-unread-messages-student/{studentInternshipId}/{studentId}")
+    public ResponseEntity<Integer> getStudentUnreadMessages(@PathVariable(name = "studentId") long studentId, @PathVariable(name = "studentInternshipId") long studentInternshipId){
+        Integer messages = _studentInternshipService.getStudentUnreadMessages(studentId, studentInternshipId);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
+
+    @GetMapping("/num-unread-messages-psychologist/{studentInternshipId}/{psychologistId}")
+    public ResponseEntity<Integer> getPsychologistUnreadMessages(@PathVariable(name = "psychologistId") long psychologistId, @PathVariable(name = "studentInternshipId") long studentInternshipId){
+        Integer messages = _studentInternshipService.getPsychologistUnreadMessages(psychologistId, studentInternshipId);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PostMapping ("/messages")
+    public ResponseEntity<Void> createMessage(@RequestBody MessageDto messageDto){
+        _studentInternshipService.createMessage(messageDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PutMapping("/messages/read")
+    public ResponseEntity<Void> readMessage(@RequestBody MessageDto messageDto){
+        _studentInternshipService.readMessage(messageDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
